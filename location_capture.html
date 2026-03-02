@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Share Location - Room on Rent</title>
+    <title>Share Location - PROP8</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,84 +16,224 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d1f3c 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #F5F7FA;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #1A1A1A;
+            padding: 20px;
+        }
+
+        /* Decorative background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -40%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(74, 144, 164, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -30%;
+            left: -15%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(27, 58, 87, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border-radius: 24px;
+            padding: 36px 28px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(27, 58, 87, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(27, 58, 87, 0.06);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Logo */
+        .logo-container {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #4A90A4, #1B3A57);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #fff;
-            padding: 20px;
+            font-size: 22px;
+            font-weight: 800;
+            box-shadow: 0 4px 12px rgba(27, 58, 87, 0.2);
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 24px;
-            padding: 40px 28px;
-            max-width: 420px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1B3A57, #4A90A4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
         }
 
-        .logo {
-            font-size: 48px;
-            margin-bottom: 8px;
+        /* Header section */
+        .header-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(74, 144, 164, 0.12), rgba(27, 58, 87, 0.08));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 28px;
         }
 
         h1 {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
-            margin-bottom: 8px;
-            color: #fff;
+            margin-bottom: 6px;
+            color: #1B3A57;
+            letter-spacing: -0.3px;
         }
 
         .subtitle {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 14px;
-            margin-bottom: 28px;
-            line-height: 1.5;
+            color: #6B7280;
+            font-size: 13px;
+            margin-bottom: 24px;
+            line-height: 1.6;
         }
 
         .code-badge {
-            display: inline-block;
-            background: rgba(59, 130, 246, 0.2);
-            border: 1px solid rgba(59, 130, 246, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #F5F7FA;
+            border: 1.5px solid rgba(27, 58, 87, 0.1);
             border-radius: 12px;
-            padding: 8px 20px;
+            padding: 10px 22px;
+            margin-bottom: 24px;
+        }
+
+        .code-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .code-value {
             font-size: 20px;
             font-weight: 700;
             letter-spacing: 4px;
-            color: #60a5fa;
-            margin-bottom: 28px;
+            color: #1B3A57;
+            font-variant-numeric: tabular-nums;
         }
 
+        /* Steps preview */
+        .steps-preview {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 24px;
+        }
+
+        .step-dot {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .step-num {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-num.done {
+            background: #10B981;
+            color: #fff;
+        }
+
+        .step-num.active {
+            background: #1B3A57;
+            color: #fff;
+        }
+
+        .step-num.pending {
+            background: #E5E7EB;
+            color: #9CA3AF;
+        }
+
+        .step-line {
+            width: 20px;
+            height: 2px;
+            border-radius: 1px;
+        }
+
+        .step-line.done {
+            background: #10B981;
+        }
+
+        .step-line.pending {
+            background: #E5E7EB;
+        }
+
+        /* Button */
         .btn {
             width: 100%;
-            padding: 16px;
+            padding: 15px;
             border: none;
-            border-radius: 16px;
-            font-size: 16px;
+            border-radius: 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            transition: all 0.3s ease;
+            gap: 8px;
+            transition: all 0.2s ease;
+            letter-spacing: -0.2px;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            background: linear-gradient(135deg, #1B3A57, #2B5278);
             color: #fff;
-            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35);
+            box-shadow: 0 4px 16px rgba(27, 58, 87, 0.25);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(59, 130, 246, 0.45);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(27, 58, 87, 0.35);
         }
 
         .btn-primary:active {
@@ -101,46 +244,56 @@
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
+            box-shadow: none;
         }
 
         .status {
-            margin-top: 20px;
-            padding: 14px;
+            margin-top: 16px;
+            padding: 12px 16px;
             border-radius: 12px;
-            font-size: 14px;
+            font-size: 13px;
             display: none;
             line-height: 1.5;
+            text-align: left;
         }
 
         .status.error {
             display: block;
-            background: rgba(239, 68, 68, 0.15);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #fca5a5;
+            background: #FEF2F2;
+            border: 1px solid #FECACA;
+            color: #DC2626;
         }
 
         .status.success {
             display: block;
-            background: rgba(34, 197, 94, 0.15);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            color: #86efac;
+            background: #F0FDF4;
+            border: 1px solid #BBF7D0;
+            color: #16A34A;
         }
 
         .status.loading {
-            display: block;
-            background: rgba(59, 130, 246, 0.15);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            color: #93c5fd;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #F0F9FF;
+            border: 1px solid #BAE6FD;
+            color: #0369A1;
         }
 
         .spinner {
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.2);
-            border-top: 3px solid #fff;
+            width: 18px;
+            height: 18px;
+            border: 2.5px solid rgba(27, 58, 87, 0.15);
+            border-top: 2.5px solid #1B3A57;
             border-radius: 50%;
-            animation: spin 0.8s linear infinite;
+            animation: spin 0.7s linear infinite;
             display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .spinner-white {
+            border-color: rgba(255, 255, 255, 0.25);
+            border-top-color: #fff;
         }
 
         @keyframes spin {
@@ -149,37 +302,154 @@
             }
         }
 
-        .success-icon {
-            font-size: 64px;
-            margin-bottom: 16px;
-        }
-
         .privacy-note {
             margin-top: 20px;
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.35);
-            line-height: 1.4;
+            padding: 12px 16px;
+            background: #F9FAFB;
+            border-radius: 10px;
+            font-size: 11px;
+            color: #9CA3AF;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            text-align: left;
+        }
+
+        .privacy-note .lock-icon {
+            flex-shrink: 0;
+            font-size: 14px;
+            margin-top: 1px;
+        }
+
+        /* Success state */
+        .success-card {
+            text-align: center;
+        }
+
+        .success-icon-container {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(52, 211, 153, 0.08));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            animation: scaleIn 0.4s ease;
+        }
+
+        .success-checkmark {
+            font-size: 36px;
+        }
+
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-title {
+            color: #10B981;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .success-msg {
+            color: #6B7280;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 20px;
+            font-size: 11px;
+            color: #9CA3AF;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .footer a {
+            color: #4A90A4;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Error page */
+        .error-card .header-icon {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
         }
     </style>
 </head>
 
 <body>
     <div class="card" id="mainCard">
-        <div class="logo">📍</div>
+        <!-- Logo -->
+        <div class="logo-container">
+            <div class="logo-icon">8</div>
+            <span class="logo-text">PROP8</span>
+        </div>
+
+        <div class="header-icon">📍</div>
         <h1>Share Your Location</h1>
-        <p class="subtitle">Someone requested your GPS location to fill in a property address. Tap the button below to
+        <p class="subtitle">Someone requested your GPS location to auto-fill a property address. Tap the button below to
             share it securely.</p>
 
-        <div class="code-badge" id="codeDisplay">------</div>
+        <!-- Code display -->
+        <div class="code-badge">
+            <span class="code-label">Code</span>
+            <span class="code-value" id="codeDisplay">------</span>
+        </div>
+
+        <!-- Step indicators -->
+        <div class="steps-preview">
+            <div class="step-dot">
+                <div class="step-num done">✓</div>
+            </div>
+            <div class="step-line done"></div>
+            <div class="step-dot">
+                <div class="step-num active" id="step2">2</div>
+            </div>
+            <div class="step-line pending" id="stepLine2"></div>
+            <div class="step-dot">
+                <div class="step-num pending" id="step3">3</div>
+            </div>
+        </div>
 
         <button class="btn btn-primary" id="shareBtn" onclick="shareLocation()">
-            <span>📡</span> Share My Location
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+            </svg>
+            Share My Location
         </button>
 
         <div class="status" id="status"></div>
 
-        <p class="privacy-note">🔒 Your location is only used to auto-fill a property address. It is not stored
-            permanently.</p>
+        <div class="privacy-note">
+            <span class="lock-icon">🔒</span>
+            <span>Your location is only used to auto-fill a property address on the PROP8 app. No personal data is
+                collected or stored permanently.</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        Powered by <a href="#">PROP8</a> — Find your perfect rental
     </div>
 
     <script>
@@ -195,30 +465,47 @@
         if (code) {
             document.getElementById('codeDisplay').textContent = code;
         } else {
-            showStatus('error', '❌ Invalid link. No location code found in the URL.');
+            showStatus('error', '❌ Invalid link — no location code found in the URL.');
             document.getElementById('shareBtn').disabled = true;
+            document.querySelector('.steps-preview').style.display = 'none';
         }
 
         function showStatus(type, message) {
             const el = document.getElementById('status');
             el.className = 'status ' + type;
-            el.innerHTML = message;
+            if (type === 'loading') {
+                el.innerHTML = '<span class="spinner"></span><span>' + message + '</span>';
+            } else {
+                el.innerHTML = message;
+            }
         }
 
-        // Get location with fallback: try high accuracy first, then low accuracy
+        function updateSteps(step) {
+            const s2 = document.getElementById('step2');
+            const s3 = document.getElementById('step3');
+            const line2 = document.getElementById('stepLine2');
+            if (step >= 2) {
+                s2.className = 'step-num done';
+                s2.textContent = '✓';
+                line2.className = 'step-line done';
+                s3.className = 'step-num active';
+            }
+            if (step >= 3) {
+                s3.className = 'step-num done';
+                s3.textContent = '✓';
+            }
+        }
+
         function getLocation() {
             return new Promise((resolve, reject) => {
                 if (!navigator.geolocation) {
                     reject(new Error('Geolocation is not supported by your browser.'));
                     return;
                 }
-
-                // First try: high accuracy with short timeout
                 navigator.geolocation.getCurrentPosition(
                     (pos) => resolve(pos),
                     () => {
-                        // Fallback: low accuracy (uses WiFi/cell tower, much faster)
-                        showStatus('loading', '📡 Trying alternate location method...');
+                        showStatus('loading', 'Trying alternate location method...');
                         navigator.geolocation.getCurrentPosition(
                             (pos) => resolve(pos),
                             (err) => reject(err),
@@ -233,18 +520,18 @@
         async function shareLocation() {
             const btn = document.getElementById('shareBtn');
             btn.disabled = true;
-            btn.innerHTML = '<span class="spinner"></span> Getting location...';
-            showStatus('loading', '📡 Requesting GPS access... Please allow location permission.');
+            btn.innerHTML = '<span class="spinner spinner-white"></span> Getting location...';
+            showStatus('loading', 'Requesting GPS access — please allow location permission.');
 
             try {
                 const position = await getLocation();
                 const lat = position.coords.latitude;
                 const lng = position.coords.longitude;
 
-                showStatus('loading', '📤 Submitting location to server...');
-                btn.innerHTML = '<span class="spinner"></span> Submitting...';
+                updateSteps(2);
+                showStatus('loading', 'Submitting location to Prop8...');
+                btn.innerHTML = '<span class="spinner spinner-white"></span> Submitting...';
 
-                // Update the location_request in Supabase
                 const response = await fetch(
                     `${SUPABASE_URL}/rest/v1/${TABLE}?code=eq.${code}&status=eq.pending`,
                     {
@@ -264,37 +551,55 @@
                 );
 
                 if (response.ok) {
+                    updateSteps(3);
                     document.getElementById('mainCard').innerHTML = `
-                        <div class="success-icon">✅</div>
-                        <h1>Location Shared!</h1>
-                        <p class="subtitle">Your GPS coordinates have been sent successfully.<br>The property owner's form will auto-fill with the address details.</p>
-                        <div class="code-badge">${code}</div>
-                        <p class="privacy-note">You can safely close this page now.</p>
+                        <div class="success-card">
+                            <div class="logo-container">
+                                <div class="logo-icon">8</div>
+                                <span class="logo-text">Prop8</span>
+                            </div>
+                            <div class="success-icon-container">
+                                <span class="success-checkmark">✓</span>
+                            </div>
+                            <div class="success-title">Location Shared!</div>
+                            <p class="success-msg">
+                                Your GPS coordinates have been sent successfully.<br>
+                                The property owner's form will auto-fill with the address details.
+                            </p>
+                            <div class="code-badge">
+                                <span class="code-label">Code</span>
+                                <span class="code-value">${code}</span>
+                            </div>
+                            <div class="privacy-note">
+                                <span class="lock-icon">✅</span>
+                                <span>You can safely close this page now. Thank you for helping!</span>
+                            </div>
+                        </div>
                     `;
                 } else {
                     const errText = await response.text();
-                    console.error('Supabase error:', response.status, errText);
-                    showStatus('error', `❌ Failed to submit location (${response.status}). The code may have expired, already been used, or the table may not exist yet.`);
+                    console.error('API error:', response.status, errText);
+                    showStatus('error', `Failed to submit location (${response.status}). The code may have expired or already been used.`);
                     btn.disabled = false;
-                    btn.innerHTML = '<span>📡</span> Try Again';
+                    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Try Again';
                 }
             } catch (err) {
                 console.error('Error:', err);
                 let msg = '';
                 if (err.code === 1) {
-                    msg = '❌ Location access denied. Please allow location in your browser settings and refresh this page.';
+                    msg = 'Location access denied. Please allow location in your browser settings and refresh this page.';
                 } else if (err.code === 2) {
-                    msg = '❌ Location unavailable. Please make sure GPS/Location is enabled on your device and try again.';
+                    msg = 'Location unavailable. Please make sure GPS/Location is enabled on your device.';
                 } else if (err.code === 3) {
-                    msg = '❌ Location request timed out. Please make sure GPS is enabled and try again.';
+                    msg = 'Location request timed out. Please make sure GPS is enabled and try again.';
                 } else if (err.message && err.message.includes('Geolocation')) {
-                    msg = '❌ ' + err.message;
+                    msg = err.message;
                 } else {
-                    msg = '❌ Error: ' + (err.message || 'Unknown error. Please check your internet connection.');
+                    msg = 'Error: ' + (err.message || 'Unknown error. Please check your internet connection.');
                 }
                 showStatus('error', msg);
                 btn.disabled = false;
-                btn.innerHTML = '<span>📡</span> Try Again';
+                btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Try Again';
             }
         }
     </script>
