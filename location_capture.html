@@ -4,11 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Share Location - PROP8</title>
+    <title>Share Location - ZORARIO</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'ITCBauhaus';
+            src: url('./ITCBauhaus.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -17,14 +25,15 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #F5F7FA;
+            background: #0D1B2A;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #1A1A1A;
+            color: #FFFFFF;
             padding: 20px;
+            overflow: hidden;
         }
 
         /* Decorative background */
@@ -35,7 +44,7 @@
             right: -20%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(74, 144, 164, 0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(74, 144, 164, 0.15) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -47,20 +56,22 @@
             left: -15%;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(27, 58, 87, 0.06) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(74, 144, 164, 0.08) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
 
         .card {
-            background: #FFFFFF;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 24px;
             padding: 36px 28px;
             max-width: 420px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 4px 24px rgba(27, 58, 87, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(27, 58, 87, 0.06);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             z-index: 1;
         }
@@ -74,24 +85,19 @@
             gap: 10px;
         }
 
-        .logo-icon {
+        .logo-img {
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, #4A90A4, #1B3A57);
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 22px;
-            font-weight: 800;
-            box-shadow: 0 4px 12px rgba(27, 58, 87, 0.2);
+            box-shadow: 0 4px 12px rgba(74, 144, 164, 0.25);
+            object-fit: contain;
         }
 
         .logo-text {
+            font-family: 'ITCBauhaus', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             font-size: 24px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #1B3A57, #4A90A4);
+            font-weight: 700;
+            background: linear-gradient(135deg, #4A90A4, #6BB5CB);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -102,7 +108,7 @@
         .header-icon {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, rgba(74, 144, 164, 0.12), rgba(27, 58, 87, 0.08));
+            background: linear-gradient(135deg, rgba(74, 144, 164, 0.2), rgba(107, 181, 203, 0.1));
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -115,12 +121,12 @@
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 6px;
-            color: #1B3A57;
+            color: #FFFFFF;
             letter-spacing: -0.3px;
         }
 
         .subtitle {
-            color: #6B7280;
+            color: rgba(255, 255, 255, 0.65);
             font-size: 13px;
             margin-bottom: 24px;
             line-height: 1.6;
@@ -130,8 +136,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: #F5F7FA;
-            border: 1.5px solid rgba(27, 58, 87, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 10px 22px;
             margin-bottom: 24px;
@@ -140,7 +146,7 @@
         .code-label {
             font-size: 11px;
             font-weight: 600;
-            color: #6B7280;
+            color: rgba(255, 255, 255, 0.5);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -149,7 +155,7 @@
             font-size: 20px;
             font-weight: 700;
             letter-spacing: 4px;
-            color: #1B3A57;
+            color: #FFFFFF;
             font-variant-numeric: tabular-nums;
         }
 
@@ -184,13 +190,14 @@
         }
 
         .step-num.active {
-            background: #1B3A57;
+            background: #4A90A4;
             color: #fff;
+            box-shadow: 0 0 10px rgba(74, 144, 164, 0.4);
         }
 
         .step-num.pending {
-            background: #E5E7EB;
-            color: #9CA3AF;
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.4);
         }
 
         .step-line {
@@ -204,7 +211,7 @@
         }
 
         .step-line.pending {
-            background: #E5E7EB;
+            background: rgba(255, 255, 255, 0.08);
         }
 
         /* Button */
@@ -226,14 +233,14 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #1B3A57, #2B5278);
+            background: linear-gradient(135deg, #4A90A4, #1B3A57);
             color: #fff;
-            box-shadow: 0 4px 16px rgba(27, 58, 87, 0.25);
+            box-shadow: 0 4px 16px rgba(74, 144, 164, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(27, 58, 87, 0.35);
+            box-shadow: 0 6px 20px rgba(74, 144, 164, 0.45);
         }
 
         .btn-primary:active {
@@ -259,32 +266,32 @@
 
         .status.error {
             display: block;
-            background: #FEF2F2;
-            border: 1px solid #FECACA;
-            color: #DC2626;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #EF4444;
         }
 
         .status.success {
             display: block;
-            background: #F0FDF4;
-            border: 1px solid #BBF7D0;
-            color: #16A34A;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: #10B981;
         }
 
         .status.loading {
             display: flex;
             align-items: center;
             gap: 10px;
-            background: #F0F9FF;
-            border: 1px solid #BAE6FD;
-            color: #0369A1;
+            background: rgba(74, 144, 164, 0.1);
+            border: 1px solid rgba(74, 144, 164, 0.2);
+            color: #6BB5CB;
         }
 
         .spinner {
             width: 18px;
             height: 18px;
-            border: 2.5px solid rgba(27, 58, 87, 0.15);
-            border-top: 2.5px solid #1B3A57;
+            border: 2.5px solid rgba(255, 255, 255, 0.15);
+            border-top: 2.5px solid #4A90A4;
             border-radius: 50%;
             animation: spin 0.7s linear infinite;
             display: inline-block;
@@ -305,10 +312,10 @@
         .privacy-note {
             margin-top: 20px;
             padding: 12px 16px;
-            background: #F9FAFB;
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 10px;
             font-size: 11px;
-            color: #9CA3AF;
+            color: rgba(255, 255, 255, 0.45);
             line-height: 1.5;
             display: flex;
             align-items: flex-start;
@@ -400,8 +407,8 @@
     <div class="card" id="mainCard">
         <!-- Logo -->
         <div class="logo-container">
-            <div class="logo-icon">8</div>
-            <span class="logo-text">PROP8</span>
+            <img src="favicon.png" alt="Zorario Logo" class="logo-img">
+            <span class="logo-text">ZORARIO</span>
         </div>
 
         <div class="header-icon">📍</div>
@@ -443,13 +450,13 @@
 
         <div class="privacy-note">
             <span class="lock-icon">🔒</span>
-            <span>Your location is only used to auto-fill a property address on the PROP8 app. No personal data is
+            <span>Your location is only used to auto-fill a property address on the ZORARIO app. No personal data is
                 collected or stored permanently.</span>
         </div>
     </div>
 
     <div class="footer">
-        Powered by <a href="#">PROP8</a> — Find your perfect rental
+        Powered by <a href="#">ZORARIO</a> — Find your perfect rental
     </div>
 
     <script>
@@ -529,7 +536,7 @@
                 const lng = position.coords.longitude;
 
                 updateSteps(2);
-                showStatus('loading', 'Submitting location to Prop8...');
+                showStatus('loading', 'Submitting location to ZORARIO...');
                 btn.innerHTML = '<span class="spinner spinner-white"></span> Submitting...';
 
                 const response = await fetch(
@@ -555,8 +562,8 @@
                     document.getElementById('mainCard').innerHTML = `
                         <div class="success-card">
                             <div class="logo-container">
-                                <div class="logo-icon">8</div>
-                                <span class="logo-text">Prop8</span>
+                                <img src="favicon.png" alt="Zorario Logo" class="logo-img">
+                                <span class="logo-text">ZORARIO</span>
                             </div>
                             <div class="success-icon-container">
                                 <span class="success-checkmark">✓</span>
