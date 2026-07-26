@@ -1,11 +1,11 @@
 {
-    "name": "room_on_rent",
-    "short_name": "room_on_rent",
+    "name": "Zorario",
+    "short_name": "Zorario",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#1B3A57",
+    "theme_color": "#1B3A57",
+    "description": "Zorario - Bihar's No.1 Real Estate Platform.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
